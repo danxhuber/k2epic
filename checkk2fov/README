@@ -1,0 +1,29 @@
+checkfov.py is a wrapper for a hack of Tom Barclay's k2fov to overplot an EPIC catalog with 
+a K2 FOV. This check is standard procedure to ensure that a generated EPIC catalog overlaps
+with the campaign coordinates.
+
+To run:
+
+1) Edit input.txt and specify some coordinates near the FOV for a given campaign
+2) run 
+
+checkfov.py input.txt campaignnumber epicpath 
+
+where
+
+campaignnumber = integer specifying campaign number
+epicpath = full path to EPIC catalog in DMC (MAST) format (i.e. a *dmc.mrg file)
+
+for example:
+
+/usr/local/anaconda/bin/python2.7 checkfov.py input.txt 7 /soc/nfs/so-nfs/dhuber/home/svn/2wheel_catalog/14260_03_epic_c7_dmc/d14260_03_epic_c7_dmc.mrg
+
+will check field 7.
+
+The output will be a targets_fov.png plot which shows the overlap between the EPIC and the K2 FOV. 
+Note that only every 100th source in the catalog is plotted to speed things up.
+
+Note that the coordinates future campaigns will have to be edited manually in K2onSilicon.py. These 
+should be the same coordinates that Tom uses for the K2fov code in his github repo.
+
+DH, March 2015
