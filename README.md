@@ -1,16 +1,19 @@
 # k2epic
 Generate an Ecliptic Plane Input Catalog (EPIC) for the K2 Mission
 
-**Documentation:** 
-* https://archive.stsci.edu/k2/epic.pdf <br/> 
-* Huber et al. (2016, in prep)
+###Documentation:
+- https://archive.stsci.edu/k2/epic.pdf <br/> 
+- Huber et al. (2016, in prep)
 
-**Dependencies:** 
+
+###Dependencies:
 * Python: numpy,astropy,astroquery <br/> 
 * IDL/GDL: ASTROLIB, Coyote Library <br/> 
 * Code is tested and functional with GDL 0.9.5 (open source implementation of IDL)
 
-**Calling Sequence**:
+###Usage:
+
+Calling sequence from IDL/GDL:
 ```
 k2epic,ra=inputRA,dec=inputDEC,inrad=inputrad,epicid=inputepicno
 ```
@@ -64,7 +67,7 @@ k2epic,ra=246.13,dec=-22.44,inrad=1,step=1
 * epicpropermotion.pro: code to check high proper motion stars in a K2 target list; See file header for details.
 	
 
-**Checkk2fov:** 
+###Checkk2fov:
 
 Contains a wrapper for a hack of Tom Barclay's k2fov to overplot an EPIC catalog with a K2 FOV. This check is standard procedure to ensure that a generated EPIC catalog overlaps with the campaign coordinates.
 
