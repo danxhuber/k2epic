@@ -135,27 +135,39 @@ printf,1,'----------------------------------------------------------------------
 printf,1,'### Derived Properties'
 printf,1,'#46 Kp          D6.3          ... Kepler Magnitude (mag)'
 printf,1,'#47 Teff        D6.0          ... Effective Temperature (K)'
-printf,1,'#48 e_Teff      D6.0          ... Uncertainty in Effective Temperature (cgs)'
-printf,1,'#49 logg        D6.3          ... log Surface Gravity (K)'
-printf,1,'#50 e_logg      D6.3          ... Uncertainty in log Surface Gravity (cgs)'
-printf,1,'#51 [Fe/H]      D6.3          ... Metallicity (dex)'
-printf,1,'#52 e_[Fe/H]    D6.3          ... Uncertainty in Metallicity (dex)'
-printf,1,'#53 Rad         D8.3          ... Stellar Radius (solar units)'
-printf,1,'#54 e_Rad       D8.3          ... Uncertainty in Stellar Radius (solar units)'
-printf,1,'#55 Mass        D8.3          ... Stellar Mass (solar units)'
-printf,1,'#56 e_Mass      D8.3          ... Uncertainty in Stellar Mass (solar units)'
-printf,1,'#57 rho         E10.3         ... Stellar Density (solar units)'
-printf,1,'#58 e_rho       E10.3         ... Uncertainty in Stellar Density (solar units)'
-printf,1,'#59 Lum         E10.3         ... Stellar Luminosity (solar units)'
-printf,1,'#60 e_Lum       E10.3         ... Uncertainty in Stellar Luminosity (solar units)'
-printf,1,'#61 d           D8.1          ... Distance (pc)'
-printf,1,'#62 e_d         D8.1          ... Uncertainty in Distance (solar units)'
-printf,1,'#63 E(B-V)      D6.3          ... Extinction (mag)'
+printf,1,'#48 ep_Teff     D6.0          ... Upper Uncertainty in Effective Temperature (K)'
+printf,1,'#49 em_Teff     D6.0          ... Lower Uncertainty in Effective Temperature (K)'
+printf,1,'#50 logg        D6.3          ... log Surface Gravity (cgs)'
+printf,1,'#51 ep_logg     D6.3          ... Upper Uncertainty in log Surface Gravity (cgs)'
+printf,1,'#52 em_logg     D6.3          ... Lower Uncertainty in log Surface Gravity (cgs)'
+printf,1,'#53 [Fe/H]      D6.3          ... Metallicity (dex)'
+printf,1,'#54 ep_[Fe/H]   D6.3          ... Upper Uncertainty in Metallicity (dex)'
+printf,1,'#55 em_[Fe/H]   D6.3          ... Lower Uncertainty in Metallicity (dex)'
+printf,1,'#56 Rad         D8.3          ... Stellar Radius (solar units)'
+printf,1,'#57 ep_Rad      D8.3          ... Upper Uncertainty in Stellar Radius (solar units)'
+printf,1,'#58 em_Rad      D8.3          ... Lower Uncertainty in Stellar Radius (solar units)'
+printf,1,'#59 Mass        D8.3          ... Stellar Mass (solar units)'
+printf,1,'#60 ep_Mass     D8.3          ... Upper Uncertainty in Stellar Mass (solar units)'
+printf,1,'#61 em_Mass     D8.3          ... Lower Uncertainty in Stellar Mass (solar units)'
+printf,1,'#62 rho         E10.3         ... Stellar Density (solar units)'
+printf,1,'#63 ep_rho      E10.3         ... Upper Uncertainty in Stellar Density (solar units)'
+printf,1,'#64 em_rho      E10.3         ... Lower Uncertainty in Stellar Density (solar units)'
+printf,1,'#65 Lum         E10.3         ... Stellar Luminosity (solar units)'
+printf,1,'#66 ep_Lum      E10.3         ... Upper Uncertainty in Stellar Luminosity (solar units)'
+printf,1,'#67 em_Lum      E10.3         ... Lower Uncertainty in Stellar Luminosity (solar units)'
+printf,1,'#68 d           D8.1          ... Distance (pc)'
+printf,1,'#69 ep_d        D8.1          ... Upper Uncertainty in Distance (solar units)'
+printf,1,'#70 em_d        D8.1          ... Lower Uncertainty in Distance (solar units)'
+printf,1,'#71 E(B-V)      D6.3          ... Extinction (mag)'
+printf,1,'#72 ep_E(B-V)   D6.3          ... Upper Uncertainty in Extinction (mag)'
+printf,1,'#73 em_E(B-V)   D6.3          ... Upper Uncertainty in Extinction (mag)'
 printf,1,'---------------------------------------------------------------------------------'
 printf,1,'### Additional Information'
-printf,1,'#64 NOMAD       A20           ... NOMAD1 Identifier (for sources with supplemented NOMAD1 proper motions)'
-printf,1,'#65 Mflg        A20           ... 2MASS Photometry Flags (Qflg-Rflg-Bflg-Cflg-Xflg-Aflg)'
-printf,1,'#66 prox        D6.3          ... 2MASS nearest neighbor distance (arcsec)'
+printf,1,'#74 NOMAD       A20           ... NOMAD1 Identifier (for sources with supplemented NOMAD1 proper motions)'
+printf,1,'#75 Mflg        A20           ... 2MASS Photometry Flags (Qflg-Rflg-Bflg-Cflg-Xflg-Aflg)'
+printf,1,'#76 prox        D6.3          ... 2MASS nearest neighbor distance (arcsec)'
+printf,1,'---------------------------------------------------------------------------------'
+close,1
 
 ;printf,1,'   EPIC    |    HIP   |       TYC       |      UCAC       |       2MASS          |         SDSS         |   Objtype  | Kepflag | StparFlag |      RA    |   DEC      |  Bmag   |  e_Bmag |  Vmag   |  e_Vmag |  umag   |  e_umag |   gmag  |  e_gmag |  rmag   |  e_rmag |  imag   |  e_imag |  zmag   |  e_zmag |  jmag   |  e_jmag |  hmag   |  e_hmag |  kmag   |  e_kmag |    Kp   |    Teff  |   e_Teff |   logg   |  e_logg  |  [Fe/H]  |  e_[Fe/H] |     Rad   |    e_Rad   |    Mass    |    e_Mass  |   rho      |  e_rho     |    Lum     |    e_Lum   |      d     |    e_d     |   E(B-V)'
 ;printf,1,'ID|HIP|TYC|UCAC|2MASS|SDSS|NOMAD|Objtype|Kepflag|StpropFlag|RA|DEC|pmRA|e_pmRA|pmDEC|e_pmDEC|'+$
@@ -228,15 +240,18 @@ if (k2cat[i].obs.pmra eq 0. and k2cat[i].obs.e_pmra eq 0.) then p11s=''+'|' else
 if (k2cat[i].obs.pmde eq 0. and k2cat[i].obs.e_pmde eq 0.) then p12s=''+'|' else p12s = strtrim(string(k2cat[i].obs.pmde/1000D,format='(d12.6)'),2)+'|'
 if (k2cat[i].obs.plx eq 0. and k2cat[i].obs.e_plx eq 0.) then p13s=''+'|' else p13s = strtrim(string(k2cat[i].obs.plx/1000D,format='(d12.6)'),2)+'|'
 
-if (k2cat[i].deriv.teff[3] eq 0.) then d1=''+'|'+''+'|' else d1 = strtrim(string(k2cat[i].deriv.teff[3],format='(d6.0)'),2)+'|'+strtrim(string(teffe,format='(d6.0)'),2)+'|'
-if (k2cat[i].deriv.logg[3] eq 0.) then d2=''+'|'+''+'|' else d2 = strtrim(string(k2cat[i].deriv.logg[3],format='(d6.3)'),2)+'|'+strtrim(string(logge,format='(d6.3)'),2)+'|'
-if (k2cat[i].deriv.feh[3] eq 0.) then d3=''+'|'+''+'|' else d3 = strtrim(string(k2cat[i].deriv.feh[3],format='(d6.3)'),2)+'|'+strtrim(string(fehe,format='(d6.3)'),2)+'|'
-if (k2cat[i].deriv.rad[3] eq 0.) then d4=''+'|'+''+'|' else d4 = strtrim(string(k2cat[i].deriv.rad[3],format='(d8.3)'),2)+'|'+strtrim(string(rade,format='(d8.3)'),2)+'|'
-if (k2cat[i].deriv.mass[3] eq 0.) then d5=''+'|'+''+'|' else d5 = strtrim(string(k2cat[i].deriv.mass[3],format='(d8.3)'),2)+'|'+strtrim(string(masse,format='(d8.3)'),2)+'|'
-if (k2cat[i].deriv.rho[3] eq 0.) then d6=''+'|'+''+'|' else d6 = strtrim(string(k2cat[i].deriv.rho[3],format='(e10.3)'),2)+'|'+strtrim(string(rhoe,format='(e10.3)'),2)+'|'
-if (k2cat[i].deriv.lum[3] eq 0.) then d7=''+'|'+''+'|' else d7 = strtrim(string(k2cat[i].deriv.lum[3],format='(e10.3)'),2)+'|'+strtrim(string(lume,format='(e10.3)'),2)+'|'
-if (k2cat[i].deriv.dis[3] eq 0.) then d8=''+'|'+''+'|' else d8 = strtrim(string(k2cat[i].deriv.dis[3],format='(d8.1)'),2)+'|'+strtrim(string(de,format='(d8.1)'),2)+'|'
-if (k2cat[i].deriv.ebv eq 0.) then d9=''+'|' else d9 = strtrim(string(k2cat[i].deriv.ebv,format='(d6.3)'),2)+'|'
+; stellar properties are delivered separately, so these are all left empty
+stpropstr='|||||||||||||||||||||||||||'
+
+;if (k2cat[i].deriv.teff[3] eq 0.) then d1=''+'|'+''+'|' else d1 = strtrim(string(k2cat[i].deriv.teff[3],format='(d6.0)'),2)+'|'+strtrim(string(teffe,format='(d6.0)'),2)+'|'
+;if (k2cat[i].deriv.logg[3] eq 0.) then d2=''+'|'+''+'|' else d2 = strtrim(string(k2cat[i].deriv.logg[3],format='(d6.3)'),2)+'|'+strtrim(string(logge,format='(d6.3)'),2)+'|'
+;if (k2cat[i].deriv.feh[3] eq 0.) then d3=''+'|'+''+'|' else d3 = strtrim(string(k2cat[i].deriv.feh[3],format='(d6.3)'),2)+'|'+strtrim(string(fehe,format='(d6.3)'),2)+'|'
+;if (k2cat[i].deriv.rad[3] eq 0.) then d4=''+'|'+''+'|' else d4 = strtrim(string(k2cat[i].deriv.rad[3],format='(d8.3)'),2)+'|'+strtrim(string(rade,format='(d8.3)'),2)+'|'
+;if (k2cat[i].deriv.mass[3] eq 0.) then d5=''+'|'+''+'|' else d5 = strtrim(string(k2cat[i].deriv.mass[3],format='(d8.3)'),2)+'|'+strtrim(string(masse,format='(d8.3)'),2)+'|'
+;if (k2cat[i].deriv.rho[3] eq 0.) then d6=''+'|'+''+'|' else d6 = strtrim(string(k2cat[i].deriv.rho[3],format='(e10.3)'),2)+'|'+strtrim(string(rhoe,format='(e10.3)'),2)+'|'
+;if (k2cat[i].deriv.lum[3] eq 0.) then d7=''+'|'+''+'|' else d7 = strtrim(string(k2cat[i].deriv.lum[3],format='(e10.3)'),2)+'|'+strtrim(string(lume,format='(e10.3)'),2)+'|'
+;if (k2cat[i].deriv.dis[3] eq 0.) then d8=''+'|'+''+'|' else d8 = strtrim(string(k2cat[i].deriv.dis[3],format='(d8.1)'),2)+'|'+strtrim(string(de,format='(d8.1)'),2)+'|'
+;if (k2cat[i].deriv.ebv eq 0.) then d9=''+'|' else d9 = strtrim(string(k2cat[i].deriv.ebv,format='(d6.3)'),2)+'|'
 
 ; DMC delivery
 str = strtrim(string(k2cat[i].id.epic),2)+'|'+strtrim(fixstring(t[1]),2)+$
@@ -252,7 +267,7 @@ p11+p12+p13+p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+$
 ''+'|'+''+'|'+$
 ''+'|'+''+'|'+$
 strtrim(string(k2cat[i].deriv.kp,format='(d6.3)'),2)+'|'+$
-d1+d2+d3+d4+d5+d6+d7+d8+d9+strtrim(t6[1],2)+'|'+m0+m1
+stpropstr+strtrim(t6[1],2)+'|'+m0+m1
 
 ; SOC delivery requires RA in hours
 ; SOC delivery, RA, DEC, Kepmag, KeplerID only
