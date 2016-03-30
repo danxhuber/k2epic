@@ -3,7 +3,7 @@ Generate an Ecliptic Plane Input Catalog (EPIC) for the K2 Mission
 
 ###Documentation:
 - https://archive.stsci.edu/k2/epic.pdf <br/> 
-- Huber et al. (2016, in prep)
+- Huber et al. (2016, ApJS, in press; http://arxiv.org/abs/1512.02643)
 
 
 ###Dependencies:
